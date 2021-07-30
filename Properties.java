@@ -46,4 +46,15 @@ public class Properties {
             }
         }
     }
+
+    public static void processProperties(long num1, long num2, String prop, String prop2) {
+
+        for (long i = num1, count = 0; count < num2; i++) {
+            if (printInlineProperties(i).contains(prop.toLowerCase()) &&
+                    printInlineProperties(i).contains(prop2.toLowerCase())) {
+                System.out.println(printInlineProperties(i));
+                count++;
+            }
+        }
+    }
 }
