@@ -10,7 +10,8 @@ public class Properties {
                 + (Number.isPalindrome(num) ? "palindromic " : "")
                 + (Number.isGapful(num) ? "gapful " : "")
                 + (Number.isSpy(num) ? "spy " : "")
-                + (Number.isSquare(num) ? "square" : "");
+                + (Number.isSquare(num) ? "square " : "")
+                + (Number.isSunny(num) ? "sunny" : "");
     }
 
     public static void processProperties(long num) {
@@ -23,8 +24,10 @@ public class Properties {
                         "\t\tduck: %b%n" +
                         "\t\tgapful: %b%n" +
                         "\t\tspy: %b%n" +
-                        "\t\tsquare: %b%n"
-                , num, n.even, n.odd, n.buzz, n.palindrome, n.duck, n.gapful, n.spy, n.square);
+                        "\t\tsquare: %b%n" +
+                        "\t\tsunny: %b%n"
+                , num, n.even, n.odd, n.buzz, n.palindrome,
+                n.duck, n.gapful, n.spy, n.square, n.sunny);
     }
 
     public static void processProperties(long num, long num2) {

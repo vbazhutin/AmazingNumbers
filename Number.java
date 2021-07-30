@@ -2,7 +2,7 @@ package numbers;
 
 public class Number {
     public static final String[] numberProperties =
-            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE"};
+            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE", "SUNNY"};
     public boolean buzz;
     public boolean duck;
     public boolean palindrome;
@@ -11,6 +11,7 @@ public class Number {
     public boolean even;
     public boolean odd;
     public boolean square;
+    public boolean sunny;
 
     public Number(long num) {
         buzz = isBuzz(num);
@@ -21,6 +22,7 @@ public class Number {
         even = isEven(num);
         odd = !isEven(num);
         square = isSquare(num);
+        sunny = isSunny(num);
     }
 
     public static boolean isSpy(long num) {
@@ -62,5 +64,9 @@ public class Number {
     {
         double sq = Math.sqrt(x);
         return ((sq - Math.floor(sq)) == 0);
+    }
+
+    public static boolean isSunny (long x) {
+        return isSquare(x + 1);
     }
 }
