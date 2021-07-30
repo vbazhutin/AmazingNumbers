@@ -1,7 +1,8 @@
 package numbers;
 
 public class Number {
-    public static final String[] numberProperties = {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD"};
+    public static final String[] numberProperties =
+            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE"};
     public boolean buzz;
     public boolean duck;
     public boolean palindrome;
@@ -9,6 +10,7 @@ public class Number {
     public boolean spy;
     public boolean even;
     public boolean odd;
+    public boolean square;
 
     public Number(long num) {
         buzz = isBuzz(num);
@@ -18,6 +20,7 @@ public class Number {
         spy = isSpy(num);
         even = isEven(num);
         odd = !isEven(num);
+        square = isSquare(num);
     }
 
     public static boolean isSpy(long num) {
@@ -53,5 +56,11 @@ public class Number {
     public static boolean isGapful(long num) {
         String[] str = String.valueOf(num).split("");
         return num % Long.parseLong(str[0] + str[str.length - 1]) == 0 && num >= 100;
+    }
+
+    public static boolean isSquare(long x)
+    {
+        double sq = Math.sqrt(x);
+        return ((sq - Math.floor(sq)) == 0);
     }
 }
