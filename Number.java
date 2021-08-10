@@ -1,9 +1,9 @@
 package numbers;
 
-public class Number {
+public class NoNumber {
     public static final String[] numberProperties =
             {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE", "SUNNY", "JUMPING"};
-    public boolean buzz;
+    private boolean buzz;
     public boolean duck;
     public boolean palindrome;
     public boolean gapful;
@@ -14,7 +14,7 @@ public class Number {
     public boolean sunny;
     public boolean jumping;
 
-    public Number(long num) {
+    public NoNumber(long num) {
         buzz = isBuzz(num);
         duck = isDuck(num);
         palindrome = isPalindrome(num);
@@ -62,8 +62,7 @@ public class Number {
         return x % Long.parseLong(str[0] + str[str.length - 1]) == 0 && x >= 100;
     }
 
-    public static boolean isSquare(long x)
-    {
+    public static boolean isSquare(long x) {
         double sq = Math.sqrt(x);
         return ((sq - Math.floor(sq)) == 0);
     }
