@@ -71,15 +71,19 @@ public class Number {
         return isSquare(x + 1);
     }
 
-    public static boolean isJumping (long x) {
+    public static boolean isJumping(long x) {
+        boolean flag = true;
         while (x != 0) {
             long digit1 = x % 10;
             x = x / 10;
             if (x != 0) {
                 long digit2 = x % 10;
-                return Math.abs(digit1 - digit2) == 1;
+                if (Math.abs(digit1 - digit2) != 1) {
+                    flag = false;
+                    break;
+                }
             }
         }
-        return true;
+        return flag;
     }
 }
