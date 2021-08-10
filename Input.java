@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class Input {
 
-    public static String[] inputProps() {
+    private static String[] input;
+
+    public static void inputProps() {
         Scanner in = new Scanner(System.in);
         System.out.println("\nEnter a request:");
-        return in.nextLine().split(" ");
+        input = in.nextLine().split("\\s");
+    }
+
+    public static String[] getInput() {
+        return input;
     }
 }

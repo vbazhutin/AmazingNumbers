@@ -2,7 +2,7 @@ package numbers;
 
 public class Welcome {
 
-    public static void greetings() {
+    public static void printGreetings() {
         System.out.println("Welcome to Amazing Numbers!\n");
     }
 

@@ -1,9 +1,9 @@
 package numbers;
 
-public class NoNumber {
+public class Number {
     public static final String[] numberProperties =
             {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE", "SUNNY", "JUMPING"};
-    private boolean buzz;
+    public boolean buzz;
     public boolean duck;
     public boolean palindrome;
     public boolean gapful;
@@ -14,7 +14,7 @@ public class NoNumber {
     public boolean sunny;
     public boolean jumping;
 
-    public NoNumber(long num) {
+    public Number(long num) {
         buzz = isBuzz(num);
         duck = isDuck(num);
         palindrome = isPalindrome(num);

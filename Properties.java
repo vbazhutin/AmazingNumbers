@@ -3,7 +3,7 @@ package numbers;
 public class Properties {
 
     public static String printInlineProperties(long num) {
-        return num + " is " + (Number.isEven(num) ? "even " : "")
+        return String.format("%,d", num) + " is " + (Number.isEven(num) ? "even " : "")
                 + (!Number.isEven(num) ? "odd " : "")
                 + (Number.isDuck(num) ? "duck " : "")
                 + (Number.isBuzz(num) ? "buzz " : "")
@@ -11,13 +11,14 @@ public class Properties {
                 + (Number.isGapful(num) ? "gapful " : "")
                 + (Number.isSpy(num) ? "spy " : "")
                 + (Number.isSquare(num) ? "square " : "")
-                + (Number.isSunny(num) ? "sunny" : "")
+                + (Number.isSunny(num) ? "sunny " : "")
                 + (Number.isJumping(num) ? "jumping" : "");
     }
 
     public static void processProperties(long num) {
+        System.out.println();
         Number n = new Number(num);
-        System.out.printf("Properties of %d%n" +
+        System.out.printf("Properties of %,d%n" +
                         "\t\teven: %b%n" +
                         "\t\todd: %b%n" +
                         "\t\tbuzz: %b%n" +
@@ -39,21 +40,16 @@ public class Properties {
         }
     }
 
-    public static void processProperties(long num1, long num2, String prop) {
+    public static void processProperties(long num1, long num2, String[] prop) {
 
         for (long i = num1, count = 0; count < num2; i++) {
-            if (printInlineProperties(i).contains(prop.toLowerCase())) {
-                System.out.println(printInlineProperties(i));
-                count++;
+            int propCount = 0;
+            for (int j = 0; j < prop.length; j++) {
+                if (printInlineProperties(i).contains(prop[j].toLowerCase())) {
+                    propCount++;
+                }
             }
-        }
-    }
-
-    public static void processProperties(long num1, long num2, String prop, String prop2) {
-
-        for (long i = num1, count = 0; count < num2; i++) {
-            if (printInlineProperties(i).contains(prop.toLowerCase()) &&
-                    printInlineProperties(i).contains(prop2.toLowerCase())) {
+            if (propCount == prop.length) {
                 System.out.println(printInlineProperties(i));
                 count++;
             }

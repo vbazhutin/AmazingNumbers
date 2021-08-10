@@ -1,8 +1,11 @@
 package numbers;
 
+import java.util.Arrays;
+
 public class Request {
 
     public static void submitRequest(String[] args) {
+
         switch (args.length) {
             case 1:
                 Properties.processProperties(Long.parseLong(args[0]));
@@ -12,12 +15,18 @@ public class Request {
                         Long.parseLong(args[1]));
                 break;
             case 3:
-                Properties.processProperties(Long.parseLong(args[0]),
-                        Long.parseLong(args[1]), args[2]);
-                break;
             case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
                 Properties.processProperties(Long.parseLong(args[0]),
-                        Long.parseLong(args[1]), args[2], args[3]);
+                        Long.parseLong(args[1]), Arrays.copyOfRange(args, 2, args.length));
+                break;
+            default:
+                System.out.println("Number of properties can't be more than 10");
                 break;
         }
     }
