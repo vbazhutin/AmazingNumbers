@@ -12,7 +12,9 @@ public class Properties {
                 + (Number.isSpy(num) ? "spy " : "")
                 + (Number.isSquare(num) ? "square " : "")
                 + (Number.isSunny(num) ? "sunny " : "")
-                + (Number.isJumping(num) ? "jumping" : "");
+                + (Number.isJumping(num) ? "jumping " : "")
+                + (Number.isHappy(num) ? "happy " : "")
+                + (Number.isSad(num) ? "sad" : "");
     }
 
     public static void processProperties(long num) {
@@ -28,9 +30,11 @@ public class Properties {
                         "\t\tspy: %b%n" +
                         "\t\tsquare : %b%n" +
                         "\t\tsunny : %b%n" +
-                        "\t\tjumping: %b%n"
+                        "\t\tjumping : %b%n" +
+                        "\t\thappy : %b%n" +
+                        "\t\tsad: %b%n"
                 , num, n.even, n.odd, n.buzz, n.palindrome,
-                n.duck, n.gapful, n.spy, n.square, n.sunny, n.jumping);
+                n.duck, n.gapful, n.spy, n.square, n.sunny, n.jumping, n.happy, n.sad);
     }
 
     public static void processProperties(long num, long num2) {
