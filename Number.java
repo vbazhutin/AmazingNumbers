@@ -14,6 +14,8 @@ public class Number {
     public boolean square;
     public boolean sunny;
     public boolean jumping;
+    public boolean happy;
+    public boolean sad;
 
     public Number(long num) {
         buzz = isBuzz(num);
@@ -26,6 +28,8 @@ public class Number {
         square = isSquare(num);
         sunny = isSunny(num);
         jumping = isJumping(num);
+        happy = isHappy(num);
+        sad = isSad(num);
     }
 
     public static boolean isSpy(long x) {
