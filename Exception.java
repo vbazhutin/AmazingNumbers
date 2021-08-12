@@ -29,6 +29,8 @@ public class Exception {
                 boolean invalid3 = Arrays.asList(props).contains("even") &&
                         Arrays.asList(props).contains("odd");
 
+                String[] wrongProps = str.toString().split(", ");
+
                 if (invalid1) {
                     System.out.println("The request contains mutually exclusive properties: [SUNNY, SQUARE]" +
                     "\nThere are no numbers with these properties.");
@@ -43,8 +45,16 @@ public class Exception {
                     return false;
                 }
 
-                else if (str.length() > 2) {
-                    System.out.printf("The properties [" +
+                else if (wrongProps.length == 1 && !Arrays.toString(Number.numberProperties).contains(wrongProps[0].toUpperCase())) {
+                        System.out.printf("The property [" +
+                                        str.replace(str.length() - 2, str.length(), "]")
+                                                .append(" is wrong\nAvailable properties: %s"),
+                                Arrays.toString(Number.numberProperties));
+                        return false;
+                    }
+
+                    else if (str.length() > 0) {
+                        System.out.printf("The properties [" +
                             str.replace(str.length() - 2, str.length(), "]")
                                     .append(" are wrong\nAvailable properties: %s"),
                             Arrays.toString(Number.numberProperties));
