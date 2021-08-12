@@ -2,7 +2,8 @@ package numbers;
 
 public class Number {
     public static final String[] numberProperties =
-            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD", "SQUARE", "SUNNY", "JUMPING"};
+            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
+                    "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"};
     public boolean buzz;
     public boolean duck;
     public boolean palindrome;
