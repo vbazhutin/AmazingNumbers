@@ -86,4 +86,22 @@ public class Number {
         }
         return flag;
     }
+
+    public static boolean isHappy(long n) {
+        if(n < 10) {
+            return n == 1 || n == 7;
+        }
+        long b;
+        int sum = 0;
+        while(n > 0) {
+            b = n % 10;
+            sum += b * b;
+            n = n / 10;
+        }
+        return isHappy(sum);
+    }
+
+    public static boolean isSad(long x) {
+        return !isHappy(x);
+    }
 }
