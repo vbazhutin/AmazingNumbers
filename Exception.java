@@ -6,6 +6,7 @@ public class Exception {
 
     public static boolean handleException() {
             String[] props = Input.getInput();
+            String[][] wrongProps = Number.mutuallyExclusiveProps;
             if (!props[0].matches("\\d+")) {
                 System.out.println("\nThe first parameter should be a natural number or zero.");
                 return false;
@@ -15,6 +16,21 @@ public class Exception {
                 return false;
 
             } else if (props.length > 2) {
+                for (int i = 0; i < wrongProps.length; i++) {
+                    int count = 0;
+                    for (int j = 0; j < wrongProps[i].length; j++) {
+                        if (Arrays.toString(props).toUpperCase().contains(wrongProps[i][j])) {
+                            props[j] = wrongProps[i][j];
+                            count++;
+                        }
+                        if (count == 2) {
+                            System.out.printf("The request contains mutually exclusive properties: [%s, %s]\n" +
+                                    "There are no numbers with these properties.", props[0], props[1]);
+                            return false;
+                        }
+                    }
+                }
+
                 StringBuilder str = new StringBuilder();
                 for (int i = 2; i < props.length; i++) {
                     if (!Arrays.toString(Number.numberProperties).contains(props[i].toUpperCase())) {
@@ -22,41 +38,21 @@ public class Exception {
                     }
                 }
 
-                boolean invalid1 = Arrays.asList(props).contains("sunny") &&
-                        Arrays.asList(props).contains("square");
-                boolean invalid2 = Arrays.asList(props).contains("duck") &&
-                        Arrays.asList(props).contains("spy");
-                boolean invalid3 = Arrays.asList(props).contains("even") &&
-                        Arrays.asList(props).contains("odd");
+                String[] invalidProps = str.toString().split(", ");
 
-                String[] wrongProps = str.toString().split(", ");
-
-                if (invalid1) {
-                    System.out.println("The request contains mutually exclusive properties: [SUNNY, SQUARE]" +
-                    "\nThere are no numbers with these properties.");
-                    return false;
-                } else if (invalid2) {
-                    System.out.println("The request contains mutually exclusive properties: [DUCK, SPY]" +
-                            "\nThere are no numbers with these properties.");
-                    return false;
-                } else if (invalid3) {
-                    System.out.println("The request contains mutually exclusive properties: [EVEN, ODD]" +
-                            "\nThere are no numbers with these properties.");
+                if (invalidProps.length == 1 && !Arrays.toString(Number.numberProperties)
+                        .contains(invalidProps[0].toUpperCase())) {
+                    System.out.printf("The property [" +
+                                    str.replace(str.length() - 2, str.length(), "]")
+                                            .append(" is wrong\nAvailable properties: %s"),
+                            Arrays.toString(Number.numberProperties));
                     return false;
                 }
 
-                else if (wrongProps.length == 1 && !Arrays.toString(Number.numberProperties).contains(wrongProps[0].toUpperCase())) {
-                        System.out.printf("The property [" +
-                                        str.replace(str.length() - 2, str.length(), "]")
-                                                .append(" is wrong\nAvailable properties: %s"),
-                                Arrays.toString(Number.numberProperties));
-                        return false;
-                    }
-
-                    else if (str.length() > 0) {
-                        System.out.printf("The properties [" +
-                            str.replace(str.length() - 2, str.length(), "]")
-                                    .append(" are wrong\nAvailable properties: %s"),
+                else if (str.length() > 0) {
+                    System.out.printf("The properties [" +
+                                    str.replace(str.length() - 2, str.length(), "]")
+                                            .append(" are wrong\nAvailable properties: %s"),
                             Arrays.toString(Number.numberProperties));
                     return false;
                 }
