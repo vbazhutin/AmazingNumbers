@@ -6,7 +6,7 @@ public class Number {
             {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
                     "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"};
     //Mutually exclusive properties, that can't be used in the input
-    public static final String[][] wrongProps = {
+    public static final String[][] mutuallyExclusiveProps = {
             {"ODD", "EVEN"}, {"SPY", "DUCK"},
             {"SUNNY", "SQUARE"}, {"HAPPY", "SAD"},
             {"ODD", "-ODD"}, {"EVEN", "-EVEN"},
