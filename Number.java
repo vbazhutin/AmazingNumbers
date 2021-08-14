@@ -1,9 +1,21 @@
 package numbers;
 
 public class Number {
+    //All available to use properties
     public static final String[] numberProperties =
             {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
                     "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"};
+    //Mutually exclusive properties, that can't be used in the input
+    public static final String[][] wrongProps = {
+            {"ODD", "EVEN"}, {"SPY", "DUCK"},
+            {"SUNNY", "SQUARE"}, {"HAPPY", "SAD"},
+            {"ODD", "-ODD"}, {"EVEN", "-EVEN"},
+            {"SUNNY", "-SUNNY"}, {"SQUARE", "-SQUARE"},
+            {"SPY", "-SPY"}, {"HAPPY", "-HAPPY"},
+            {"SAD", "-SAD"}, {"BUZZ", "-BUZZ"},
+            {"DUCK", "-DUCK"}, {"PALINDROMIC", "-PALINDROMIC"},
+            {"GAPFUL", "-GAPFUL"}, {"JUMPING", "-JUMPING"}
+    };
     public boolean buzz;
     public boolean duck;
     public boolean palindrome;
@@ -17,6 +29,7 @@ public class Number {
     public boolean happy;
     public boolean sad;
 
+    //Number Constructor
     public Number(long num) {
         buzz = isBuzz(num);
         duck = isDuck(num);
@@ -32,6 +45,7 @@ public class Number {
         sad = isSad(num);
     }
 
+    //Methods to calculate number properties
     public static boolean isSpy(long x) {
         long ld;
         long sum = 0;
