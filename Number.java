@@ -20,7 +20,8 @@ public class Number {
             {"SPY", "-SPY"}, {"HAPPY", "-HAPPY"},
             {"SAD", "-SAD"}, {"BUZZ", "-BUZZ"},
             {"DUCK", "-DUCK"}, {"PALINDROMIC", "-PALINDROMIC"},
-            {"GAPFUL", "-GAPFUL"}, {"JUMPING", "-JUMPING"}
+            {"GAPFUL", "-GAPFUL"}, {"JUMPING", "-JUMPING"},
+            {"-ODD", "-EVEN"}
     };
     public boolean buzz;
     public boolean duck;
