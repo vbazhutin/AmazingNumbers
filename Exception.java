@@ -49,7 +49,7 @@ public class Exception {
 
                 //checking the value of properties in input
                 //if found one, make sure it's not mutually exclusive
-                for (int j = 0, p = 0; j < wrongProps.length; j++) {
+                for (int j = 0; j < wrongProps.length; j++) {
                     String[] mutExcProps = new String[]{"", ""};
                     int count = 1;
                     int invalidCount = 0;
