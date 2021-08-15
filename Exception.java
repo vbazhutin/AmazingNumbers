@@ -17,11 +17,13 @@ public class Exception {
                 return false;
 
             } else if (props.length > 2) {
+
                 //checking the value of properties in input
                 //if found one, make sure it's not mutually exclusive
                 for (int j = 0; j < wrongProps.length; j++) {
                     String[] invalidProps = new String[2];
                     int count = 0;
+
                     //comparing every possible correct prop with the input
                     for (int k = 0; k < wrongProps[j].length; k++) {
                         for (int i = 0; i < props.length; i++) {
@@ -31,6 +33,7 @@ public class Exception {
                                 count++;
                             }
                         }
+
                         //output mutually exclusive props
                         if (count == 2) {
                             System.out.printf("The request contains mutually exclusive properties: [%s, %s]\n" +
@@ -42,15 +45,16 @@ public class Exception {
 
                 StringBuilder str = new StringBuilder();
                 for (int i = 2; i < props.length; i++) {
+
                     //looking for invalid props and putting them into a separate StringBuilder var
-                    if (!Arrays.toString(Number.numberProps).contains(props[i].toUpperCase())) {
+                    if (!Arrays.toString(Number.allAvailProps).contains(props[i].toUpperCase())) {
                         str.append(props[i].toUpperCase()).append(", ");
                     }
                 }
 
-                String[] invalidProps = str.toString().split(", ");
                 //if one invalid property found -> output it and return false
-                if (invalidProps.length == 1 && !Arrays.toString(Number.numberProps)
+                String[] invalidProps = str.toString().split(", ");
+                if (invalidProps.length == 1 && !Arrays.toString(Number.allAvailProps)
                         .contains(invalidProps[0].toUpperCase())) {
                     System.out.printf("The property [" +
                                     str.replace(str.length() - 2, str.length(), "]")
