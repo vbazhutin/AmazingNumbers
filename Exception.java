@@ -59,10 +59,10 @@ public class Exception {
                             //if found incorrect -> assign to element of array
                             if (props[i].equalsIgnoreCase(wrongProps[j][k])) {
                                 mutExcProps[invalidCount] = wrongProps[j][k];
-                                if (mutExcProps[0].length() != 0) {
-                                    invalidCount++;
+                                if (mutExcProps[0].length() != 0 && !wrongProps[j][k].equals(mutExcProps[0])) {
+                                    mutExcProps[invalidCount + 1] = wrongProps[j][k];
+                                    count++;
                                 }
-                                count++;
                             }
                         }
 
