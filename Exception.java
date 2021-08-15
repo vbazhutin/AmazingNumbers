@@ -18,34 +18,6 @@ public class Exception {
 
             } else if (props.length > 2) {
 
-                //checking the value of properties in input
-                //if found one, make sure it's not mutually exclusive
-                for (int j = 0, p = 0; j < wrongProps.length; j++) {
-                    String[] invalidProps = new String[2];
-                    int count = 0;
-                    int invalidCount = 0;
-                    //comparing every possible correct prop with the input
-                    for (int k = 0; k < wrongProps[j].length; k++) {
-                        for (int i = 0; i < props.length; i++) {
-                            //if found incorrect -> assign to element of array
-                            if (props[i].equalsIgnoreCase(wrongProps[j][k])) {
-                                invalidProps[invalidCount] = wrongProps[j][k];
-                                if (invalidProps[0].length() != 0) {
-                                    invalidCount++;
-                                }
-                                count++;
-                            }
-                        }
-
-                        //output mutually exclusive props
-                        if (count == 2) {
-                            System.out.printf("The request contains mutually exclusive properties: [%s, %s]\n" +
-                                    "There are no numbers with these properties.", invalidProps[0], invalidProps[1]);
-                            return false;
-                        }
-                    }
-                }
-
                 StringBuilder str = new StringBuilder();
                 for (int i = 2; i < props.length; i++) {
 
@@ -73,6 +45,34 @@ public class Exception {
                                             .append(" are wrong\nAvailable properties: %s"),
                             Arrays.toString(Number.numberProps));
                     return false;
+                }
+
+                //checking the value of properties in input
+                //if found one, make sure it's not mutually exclusive
+                for (int j = 0, p = 0; j < wrongProps.length; j++) {
+                    String[] mutExcProps = new String[2];
+                    int count = 0;
+                    int invalidCount = 0;
+                    //comparing every possible correct prop with the input
+                    for (int k = 0; k < wrongProps[j].length; k++) {
+                        for (int i = 0; i < props.length; i++) {
+                            //if found incorrect -> assign to element of array
+                            if (props[i].equalsIgnoreCase(wrongProps[j][k])) {
+                                mutExcProps[invalidCount] = wrongProps[j][k];
+                                if (mutExcProps[0].length() != 0) {
+                                    invalidCount++;
+                                }
+                                count++;
+                            }
+                        }
+
+                        //output mutually exclusive props
+                        if (count == 2) {
+                            System.out.printf("The request contains mutually exclusive properties: [%s, %s]\n" +
+                                    "There are no numbers with these properties.", mutExcProps[0], mutExcProps[1]);
+                            return false;
+                        }
+                    }
                 }
             }
         return true;
