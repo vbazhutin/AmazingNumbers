@@ -1,10 +1,16 @@
 package numbers;
 
 public class Number {
-    //All available to use properties
-    public static final String[] numberProperties =
+    //All Number properties
+    public static final String[] numberProps =
             {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
                     "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD"};
+    //All available to use properties
+    public static final String[] allAvailProps =
+            {"BUZZ", "DUCK", "PALINDROMIC", "GAPFUL", "SPY", "EVEN", "ODD",
+                    "SQUARE", "SUNNY", "JUMPING", "HAPPY", "SAD", "-BUZZ", "-DUCK",
+                    "-PALINDROMIC", "-GAPFUL", "-SPY", "-EVEN", "-ODD",
+                    "-SQUARE", "-SUNNY", "-JUMPING", "-HAPPY", "-SAD"};
     //Mutually exclusive properties, that can't be used in the input
     public static final String[][] mutuallyExclusiveProps = {
             {"ODD", "EVEN"}, {"SPY", "DUCK"},
