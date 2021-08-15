@@ -69,14 +69,14 @@ public class Properties {
             boolean flag2 = false;
 
             //checking array of including props
-            for (String value : includeArr) {
+            for (String s : includeArr) {
 
                 //if array is empty then flag is true == no props to include
                 //The flag is true ONLY WHEN the number props String contains including prop from the input
                 if (includeArr[0].length() == 0) {
                     flag1 = true;
                     break;
-                } else if (Properties.printInlineProperties(i).toUpperCase().contains(value)) {
+                } else if (Properties.printInlineProperties(i).contains(s.toLowerCase())) {
                     flag1 = true;
                 } else {
                     flag1 = false;
@@ -90,7 +90,7 @@ public class Properties {
                 if (excludeArr[0].length() == 0) {
                     flag2 = true;
                     break;
-                } else if (!Properties.printInlineProperties(i).toUpperCase().contains(s)) {
+                } else if (!Properties.printInlineProperties(i).contains(s.toLowerCase())) {
                     flag2 = true;
                 } else {
                     flag2 = false;
