@@ -20,16 +20,19 @@ public class Exception {
 
                 //checking the value of properties in input
                 //if found one, make sure it's not mutually exclusive
-                for (int j = 0; j < wrongProps.length; j++) {
+                for (int j = 0, p = 0; j < wrongProps.length; j++) {
                     String[] invalidProps = new String[2];
                     int count = 0;
-
+                    int invalidCount = 0;
                     //comparing every possible correct prop with the input
                     for (int k = 0; k < wrongProps[j].length; k++) {
                         for (int i = 0; i < props.length; i++) {
                             //if found incorrect -> assign to element of array
                             if (props[i].equalsIgnoreCase(wrongProps[j][k])) {
-                                invalidProps[k] = wrongProps[j][k];
+                                invalidProps[invalidCount] = wrongProps[j][k];
+                                if (invalidProps[0].length() != 0) {
+                                    invalidCount++;
+                                }
                                 count++;
                             }
                         }
