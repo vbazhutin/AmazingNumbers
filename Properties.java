@@ -76,7 +76,7 @@ public class Properties {
                 if (includeArr[0].length() == 0) {
                     flag1 = true;
                     break;
-                } else if (Properties.printInlineProperties(i).contains(value)) {
+                } else if (Properties.printInlineProperties(i).toUpperCase().contains(value)) {
                     flag1 = true;
                 } else {
                     flag1 = false;
@@ -90,7 +90,7 @@ public class Properties {
                 if (excludeArr[0].length() == 0) {
                     flag2 = true;
                     break;
-                } else if (!Properties.printInlineProperties(i).contains(s)) {
+                } else if (!Properties.printInlineProperties(i).toUpperCase().contains(s)) {
                     flag2 = true;
                 } else {
                     flag2 = false;
