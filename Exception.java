@@ -50,17 +50,17 @@ public class Exception {
                 //checking the value of properties in input
                 //if found one, make sure it's not mutually exclusive
                 for (int j = 0, p = 0; j < wrongProps.length; j++) {
-                    String[] mutExcProps = new String[2];
-                    int count = 0;
+                    String[] mutExcProps = new String[]{"", ""};
+                    int count = 1;
                     int invalidCount = 0;
                     //comparing every possible correct prop with the input
                     for (int k = 0; k < wrongProps[j].length; k++) {
                         for (int i = 0; i < props.length; i++) {
                             //if found incorrect -> assign to element of array
                             if (props[i].equalsIgnoreCase(wrongProps[j][k])) {
-                                mutExcProps[invalidCount] = wrongProps[j][k];
-                                if (mutExcProps[0].length() != 0 && !wrongProps[j][k].equals(mutExcProps[0])) {
-                                    mutExcProps[invalidCount + 1] = wrongProps[j][k];
+                                mutExcProps[k] = wrongProps[j][k];
+                                if (!wrongProps[j][k].equals(mutExcProps[0]) && mutExcProps[0].length() != 0) {
+                                    mutExcProps[k] = wrongProps[j][k];
                                     count++;
                                 }
                             }
