@@ -45,16 +45,62 @@ public class Properties {
     }
 
     public static void processProperties(long num1, long num2, String[] prop) {
+        //Building including and excluding properties
+        StringBuilder includeProps = new StringBuilder();
+        StringBuilder excludeProps = new StringBuilder();
+        for (String s : prop) {
+
+            //excluding props builder
+            if (s.startsWith("-")) {
+                excludeProps.append(s).append(" ");
+
+                //including props builder
+            } else {
+                includeProps.append(s).append(" ");
+            }
+        }
+
+        //Making String builders into an array of String for better calculations
+        String[] includeArr = String.valueOf(includeProps).split(" ");
+        String[] excludeArr = String.valueOf(excludeProps).replaceAll("-", "").split(" ");
 
         for (long i = num1, count = 0; count < num2; i++) {
-            int propCount = 0;
-            for (int j = 0; j < prop.length; j++) {
-                if (printInlineProperties(i).contains(prop[j].toLowerCase())) {
-                    propCount++;
+            boolean flag1 = false;
+            boolean flag2 = false;
+
+            //checking array of including props
+            for (String value : includeArr) {
+
+                //if array is empty then flag is true == no props to include
+                //The flag is true ONLY WHEN the number props String contains including prop from the input
+                if (includeArr[0].length() == 0) {
+                    flag1 = true;
+                    break;
+                } else if (Properties.printInlineProperties(i).contains(value)) {
+                    flag1 = true;
+                } else {
+                    flag1 = false;
+                    break;
                 }
             }
-            if (propCount == prop.length) {
-                System.out.println(printInlineProperties(i));
+
+            // Same with the array of excluding props
+            // The flag is true ONLY WHEN the number props String DOESN'T contain excluding prop from the input
+            for (String s : excludeArr) {
+                if (excludeArr[0].length() == 0) {
+                    flag2 = true;
+                    break;
+                } else if (!Properties.printInlineProperties(i).contains(s)) {
+                    flag2 = true;
+                } else {
+                    flag2 = false;
+                    break;
+                }
+            }
+
+            //if both flag are true - all prop conditions are met -> output the number
+            if (flag1 && flag2) {
+                System.out.println(Properties.printInlineProperties(i));
                 count++;
             }
         }
